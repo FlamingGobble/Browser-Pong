@@ -1,4 +1,6 @@
 var player = $('#player');
+var cpu = $("#cpu");
+var ball = $("#ball");
 $(document).keydown(function(e) {
 	if (e.keyCode === 68 && player.position().left < 215) {
 		player.css("left", player.position().left + 5 + 'px');
