@@ -1,0 +1,41 @@
+#body {
+    width:520px;
+    height:400px;
+    margin-left:100px;
+    margin-top:100px;
+    border: 2px solid #808080;
+    position:relative;
+}
+#cpu {
+    position:absolute;
+    border: 1px solid #808080;
+    background-color: #B2B2B2;
+    width:80px;
+    height:15px;
+    left:220px;
+    /* sets it to the center*/
+    top:10px;
+    display:block;
+    float:top;
+}
+#ball {
+    position:absolute;
+    height:20px;
+    width:20px;
+    border-radius:10px;
+    moz-border-radius:7px;
+    webkit-border-radius:7px;
+    border: 1px solid #333333;
+    background-color:#333333;
+    top:190px;
+    left:250px;
+}
+#player {
+    position:absolute;
+    border: 1px solid #808080;
+    background-color: #B2B2B2;
+    width:80px;
+    height:15px;
+    margin-left:220px;
+    bottom:10px;
+}
