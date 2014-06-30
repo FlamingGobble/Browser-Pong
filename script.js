@@ -19,7 +19,13 @@ $(document).click(function () {
             ball.css("top", ball.position().top + (dist * Math.sin(ballDir)) + 'px');
             ball.css("left", ball.position().left + (dist * Math.cos(ballDir)) + 'px');
             if (ball.position().left < 0 || ball.position().left > 500) {
-                ballDir = ((ballDir*(180/Math.PI)) - 180)*(Math.PI/180);         
+                ball.css("left", ball.position().left + Math.sin(ballDir)*(0-dist));
+                if (ball.position().left < 0 || ball.position().left > 500) {
+                    ballDir = (180-((180/Math.PI)*ballDir))*(Math.PI/180);
+                } else {
+                    ballDir = (0-((180/Math.PI)*ballDir))*(Math.PI/180);
+                }
+                ball.css("left", ball.position().left + Math.sin(ballDir)*dist);
             }
         }, 5);
         });
