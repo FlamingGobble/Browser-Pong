@@ -11,7 +11,7 @@ $(document).keydown(function (e) {
         player.css("left", player.position().left - 5 + 'px');
     }
 });
-$(document).click(function () {
+$(document).mouseenter(function () {
     if (starting) {
         $("#ball").click(function () {
             starting = false;
