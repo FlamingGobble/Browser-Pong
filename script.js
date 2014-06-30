@@ -13,7 +13,7 @@ $(document).keydown(function (e) {
 });
 $(document).click(function () {
     if (starting) {
-        $("#ball").hover(function () {
+        $("#ball").click(function () {
             starting = false;
             setInterval(function () {
             ball.css("top", ball.position().top + (dist * Math.sin(ballDir)) + 'px');
