@@ -18,8 +18,8 @@ $(document).mouseenter(function () {
         if (starting) {
             setInterval(function () {
                 //Function for the ball's bounce
-                function ballBounce() {
-                    if (ball.position().left < 0 || ball.position().left > 500) {
+                function ballBounce(condition) {
+                    if (condition) {
                         ball.css("left", (ball.position().left + Math.sin(ballDir) * (0 - dist)) + "px");
 
                         if (ball.position().left < 0 || ball.position().left > 500) {
@@ -33,7 +33,7 @@ $(document).mouseenter(function () {
                 //Ball actual motion
                 ball.css("top", ball.position().top + (dist * Math.sin(ballDir)) + 'px');
                 ball.css("left", ball.position().left + (dist * Math.cos(ballDir)) + 'px');
-                ballBounce();
+                ballBounce(ball.position().left < 0 || ball.position().left > 500);
                 //AI MOTION
                 function aiMove() {
                     if (ball.position().left > cpu.position().left + 30) {
