@@ -31,9 +31,9 @@ $(document).mouseenter(function () {
             }, 5);
 //AI MOTION            
             setInterval(function() {
-                if (ball.position().left > cpu.position().left) {
+                if (ball.position().left > cpu.position().left + 30) {
                     cpu.css("left", (cpu.position().left + 2) + "px");
-                } else if (ball.position().left < cpu.position().left) {
+                } else if (ball.position().left < cpu.position().left + 30) {
                     cpu.css("left", (cpu.position().left - 2) + "px");
                 }
             }, 5);
