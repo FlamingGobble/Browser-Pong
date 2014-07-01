@@ -4,11 +4,12 @@ var cpu = $("#cpu");
 var ball = $("#ball");
 var starting = true;
 var dist = 2;
+var playerSpeed = 10;
 $(document).keydown(function (e) {
     if (e.keyCode === 68 && player.position().left < 215) {
-        player.css("left", player.position().left + 5 + 'px');
+        player.css("left", player.position().left + playerSpeed + 'px');
     } else if (e.keyCode === 65 && player.position().left > -215) {
-        player.css("left", player.position().left - 5 + 'px');
+        player.css("left", player.position().left - playerSpeed + 'px');
     }
 });
 $(document).mouseenter(function () {
