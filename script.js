@@ -34,14 +34,15 @@ $(document).mouseenter(function () {
                 ball.css("top", ball.position().top + (dist * Math.sin(ballDir)) + 'px');
                 ball.css("left", ball.position().left + (dist * Math.cos(ballDir)) + 'px');
                 ballBounce();
-            }, 5);
-            //AI MOTION            
-            setInterval(function () {
-                if (ball.position().left > cpu.position().left + 30) {
-                    cpu.css("left", (cpu.position().left + cpuSpeed) + "px");
-                } else if (ball.position().left < cpu.position().left + 30) {
-                    cpu.css("left", (cpu.position().left - cpuSpeed) + "px");
+                //AI MOTION
+                function aiMove() {
+                    if (ball.position().left > cpu.position().left + 30) {
+                        cpu.css("left", (cpu.position().left + cpuSpeed) + "px");
+                    } else if (ball.position().left < cpu.position().left + 30) {
+                        cpu.css("left", (cpu.position().left - cpuSpeed) + "px");
+                    }
                 }
+                aiMove();
             }, 5);
         }
         starting = false;
