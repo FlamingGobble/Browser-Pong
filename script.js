@@ -22,7 +22,7 @@ $(document).mouseenter(function () {
                     if (condition) {
                         ball.css("left", (ball.position().left + Math.sin(ballDir) * (0 - dist)) + "px");
 
-                        if (ball.position().left < 0 || ball.position().left > 500) {
+                        if (condition) {
                             ballDir = (180 - ((180 / Math.PI) * ballDir)) * (Math.PI / 180);
                         } else {
                             ballDir = (0 - ((180 / Math.PI) * ballDir)) * (Math.PI / 180);
