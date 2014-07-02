@@ -1,3 +1,11 @@
+/***********************************************************************
+
+BROWSER PONG
+===========================
+Most JavaScript by Firedrake969.  Some by turkey3.  Most CSS by turkey3, and some by Firedrake969.  Originally part of -FlamingGobble-, but now the code is turning into my own game.
+
+Turkey3 made the AI motion.
+***********************************************************************/
 var ballDir = (Math.floor(Math.random() * (360) + 1)) * (Math.PI / 180);
 var player = $('#player');
 var cpu = $("#cpu");
@@ -23,24 +31,26 @@ $(document).mouseenter(function () {
                 //Function for the ball's bounce
                 function ballBounce(condition) {
                     if (condition) {
-                        ball.css("left", (ball.position().left + Math.sin(ballDir) * (0 - dist)) + "px");
+                        ball.css("left", Math.round(ball.position().left + Math.sin(ballDir) * (0 - dist)) + "px");
 
                         if (condition) {
                             ballDir = ((Math.floor(Math.random() * ((2 * randOffset) + 1)) - randOffset) + (180 - ((180 / Math.PI) * ballDir))) * (Math.PI / 180);
                         } else {
                             ballDir = ((Math.floor(Math.random() * ((2 * randOffset) + 1)) - randOffset) + (0 - ((180 / Math.PI) * ballDir))) * (Math.PI / 180);
                         }
-                        ball.css("left", (ball.position().left + Math.sin(ballDir) * dist) + "px");
+                        ball.css("left", Math.round(ball.position().left + Math.sin(ballDir) * dist) + "px");
                     }
                 }
                 //Ball actual motion
-                ball.css("top", ball.position().top + (dist * Math.sin(ballDir)) + 'px');
-                ball.css("left", ball.position().left + (dist * Math.cos(ballDir)) + 'px');
+                ball.css("top", Math.round(ball.position().top + (dist * Math.sin(ballDir))) + 'px');
+                ball.css("left", Math.round(ball.position().left + (dist * Math.cos(ballDir))) + 'px');
                 //Ball bouncing!  Will be combined later.
                 //Check for walls
                 ballBounce(ball.position().left < 0 || ball.position().left > 500);
                 //Check for the player paddle
                 ballBounce(ball.position().left < player.position().left + 70 && ball.position().left + 10 > player.position().left && ball.position().top < 380 && ball.position().top > 370);
+                //AI paddle
+                ballBounce(ball.position().left < cpu.position().left + 70 && ball.position().left + 10 > cpu.position().left && ball.position().top < 24 && ball.position().top > 26);
                 //AI MOTION
                 function aiMove() {
                     if (ball.position().left > cpu.position().left + 30) {
@@ -77,28 +87,30 @@ $(document).mouseenter(function () {
                         }
                     }
                     cpu.css("left", (cpu.position().left + cpuSpeed) + "px");
+                    if (cpu.position().left < 5) {
+                        cpu.css("left", "5px");
+                    }
+                    if (cpu.position().left > 440) {
+                        cpu.css("left", "435px");
+                    }
                 }
                 aiMove();
-
-                function detectGoal() {
-                    if (ball.position().top < 1) {
-                        scorePlayer += 1;
-                        reset();
-                    }
-                    if (ball.position().top > 379) {
-                        scoreOpponent += 1;
-                        reset();
-                    }
-                }
-
                 function reset() {
                     ball.css('top', 190 + 'px');
                     ball.css('left', 250 + 'px');
                     ballDir = (Math.floor(Math.random() * (360) + 1)) * (Math.PI / 180);
                     dist = 2;
-                    i = 0;
                 }
-                aiMove();
+                function detectGoal() {
+                    if (ball.position().top < 15) {
+                        scorePlayer += 1;
+                        reset();
+                    }
+                    if (ball.position().top > 375) {
+                        scoreOpponent += 1;
+                        reset();
+                    }
+                }
                 detectGoal();
             }, 5);
         }
