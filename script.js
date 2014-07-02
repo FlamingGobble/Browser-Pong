@@ -33,7 +33,11 @@ $(document).mouseenter(function () {
                 //Ball actual motion
                 ball.css("top", ball.position().top + (dist * Math.sin(ballDir)) + 'px');
                 ball.css("left", ball.position().left + (dist * Math.cos(ballDir)) + 'px');
+                //Ball bouncing!  Will be combined later.
+                //Check for walls
                 ballBounce(ball.position().left < 0 || ball.position().left > 500);
+                //Check for the player paddle
+                ballBounce(ball.position().left < player.position().left + 70 && ball.position().left + 10 > player.position().left && ball.position().top < 380 && ball.position().top > 370);
                 //AI MOTION
                 function aiMove() {
                     if (ball.position().left > cpu.position().left + 30) {
