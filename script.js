@@ -5,8 +5,11 @@ var ball = $("#ball");
 var starting = true;
 var dist = 2;
 var playerSpeed = 10;
-var cpuSpeed = 2;
+var scorePlayer = 0;
+var ScoreOpponent = 0;
+var cpuSpeed = 0;
 var randOffset = 15;
+var i = 0;
 $(document).keydown(function (e) {
     if (e.keyCode === 68 && player.position().left < 215) {
         player.css("left", player.position().left + playerSpeed + 'px');
@@ -42,12 +45,79 @@ $(document).mouseenter(function () {
                 //AI MOTION
                 function aiMove() {
                     if (ball.position().left > cpu.position().left + 30) {
-                        cpu.css("left", (cpu.position().left + cpuSpeed) + "px");
-                    } else if (ball.position().left < cpu.position().left + 30) {
-                        cpu.css("left", (cpu.position().left - cpuSpeed) + "px");
+                        if(ball.position().left - cpu.position().left + 30 < 120) {
+                            if(ball.position().top - cpu.position().top < 120) {
+                                cpuSpeed = 2;
+                            }
+                            else {
+                                cpuSpeed = 2 - (Math.Random() / 2); //from 1.5-2
+                            }
+                        }
+                        else { 
+                            if(ball.position().top - cpu.position().top > 250) { 
+                                cpuSpeed = 1;   
+                            }
+                            else if(ball.position().top - cpu.position().top > 160) {
+                                cpuSpeed = 1.5;
+                            }
+                            else {
+                                cpuSpeed = 2;    
+                            }
+                        }
                     }
+                    else {
+                        if(cpu.position().left - ball.position().left + 30 < 120) {
+                            if(ball.position().top - cpu.position().top < 120) {
+                                cpuSpeed = -2;
+                            }
+                            else {
+                                cpuSpeed = -2 + (Math.Random() / 2);
+                            }
+                        }
+                        else {
+                            if(ball.position().top - cpu.position().top > 250) { 
+                                cpuSpeed = -1;   
+                            }
+                            else if(ball.position().top - cpu.position().top > 160) {
+                                cpuSpeed = -1.5;
+                            }
+                            else {
+                                cpuSpeed = -2;    
+                            }                            
+                        }
+                    }
+                    cpu.css("left", (cpu.position().left + cpuSpeed) + "px");
                 }
                 aiMove();
+                function detectGoal() {
+                    if(ball.position().top < 1) {
+                        scorePlayer += 1;
+                        reset();
+                    }
+                    if(ball.position().top > 379) {
+                        scoreOpponent += 1;
+                        reset();
+                    }
+                }
+                function reset() {
+                    ball.css('top', 190 + 'px');
+                    ball.css('left', 250 + 'px');
+                    ballDir = (Math.floor(Math.random() * (360) + 1)) * (Math.PI / 180);
+                    dist = 2;
+                    i = 0;
+                }
+                /*
+                function counter() {
+                    if(dist = null) {
+                        i += 1;
+                        if(i = 60) {
+                            dist = 2;
+                        }
+                    }
+                }
+                */
+                detectGoal();
+                counter();
             }, 5);
         }
         starting = false;
