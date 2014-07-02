@@ -6,6 +6,7 @@ var starting = true;
 var dist = 2;
 var playerSpeed = 10;
 var cpuSpeed = 2;
+var randOffset = 15;
 $(document).keydown(function (e) {
     if (e.keyCode === 68 && player.position().left < 215) {
         player.css("left", player.position().left + playerSpeed + 'px');
@@ -23,9 +24,9 @@ $(document).mouseenter(function () {
                         ball.css("left", (ball.position().left + Math.sin(ballDir) * (0 - dist)) + "px");
 
                         if (condition) {
-                            ballDir = (180 - ((180 / Math.PI) * ballDir)) * (Math.PI / 180);
+                            ballDir = ((Math.floor(Math.random() * ((2 * randOffset) + 1)) - randOffset) + (180 - ((180 / Math.PI) * ballDir))) * (Math.PI / 180);
                         } else {
-                            ballDir = (0 - ((180 / Math.PI) * ballDir)) * (Math.PI / 180);
+                            ballDir = ((Math.floor(Math.random() * ((2 * randOffset) + 1)) - randOffset) + (0 - ((180 / Math.PI) * ballDir))) * (Math.PI / 180);
                         }
                         ball.css("left", (ball.position().left + Math.sin(ballDir) * dist) + "px");
                     }
