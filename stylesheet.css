@@ -5,6 +5,7 @@
     margin-top:0px;
     border: 2px solid #808080;
     position:relative;
+    border-radius:10px;
 }
 #cpu {
     position:absolute;
@@ -38,4 +39,15 @@
     height:15px;
     margin-left:220px;
     bottom:10px;
+}
+#infobox {
+    width:520px;
+    height:100px;
+    border:2px solid #808080;
+    margin-left:0px;
+    margin-top:5px;
+    position:relative;
+    border-radius:10px;
+    text-align:center;
+    font-family:Helvetica;
 }
