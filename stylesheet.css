@@ -52,3 +52,13 @@
     webkit-border-radius:20px;
     color:#4D4D4D;
 }
+#footer {
+    margin-left:50px;
+    width:520px;
+    height:auto;
+    color:#999999;
+}
+#year {
+    color:#CCCCCC
+    font-size:11px;
+}
