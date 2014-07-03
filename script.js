@@ -2,9 +2,7 @@
 
 BROWSER PONG
 ===========================
-Most JavaScript by Firedrake969.  Some by turkey3.  Most CSS by turkey3, and some by Firedrake969.  Originally part of -FlamingGobble-, but now the code is turning into my own game.
-
-Turkey3 made the AI motion.
+Most JavaScript by Firedrake969.  Some by turkey3.  Most CSS by turkey3, and some by Firedrake969.  Originally part of -FlamingGobble-, but now the code is turning into my own game  Turkey3 made the AI motion.
 ***********************************************************************/
 var ballDir = (Math.floor(Math.random() * (360) + 1)) * (Math.PI / 180);
 var player = $('#player');
